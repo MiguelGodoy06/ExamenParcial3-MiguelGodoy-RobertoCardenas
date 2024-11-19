@@ -3,7 +3,7 @@
 
 int main() {
 
-    Estudiante miguel("Miguel", 18, "Masculino", "Ingeniería Informática");
+    Estudiante miguel("Miguel Godoy", 18, "Masculino", "Ingeniería Informática");
     miguel.mostrarInformacion();
 
     return 0;
