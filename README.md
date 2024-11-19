@@ -44,24 +44,159 @@ a) C utiliza cout y cin mientras que C++ utiliza printf y scanf.
 b) C utiliza printf y scanf mientras que C++ utiliza std::cout y std::cin.
 c) No hay ninguna diferencia.
 d) C++ utiliza printf y scanf mientras que C utiliza std::cout y std::cin.
-¿Qué es un espacio de nombres en C++?
+SOLUCIÓN
+b) C utiliza printf y scanf mientras que C++ utiliza std::cout y std::cin.
 
+Explicación:
+C:
+
+Usa funciones como printf y scanf para realizar operaciones de entrada/salida.
+Estas funciones son parte de la biblioteca estándar de C (stdio.h).
+C++:
+
+Utiliza los operadores de flujo std::cout (salida) y std::cin (entrada) para manejar entrada/salida.
+Estas son parte de la biblioteca de entrada/salida de C++ (iostream).
+Esto refleja una de las diferencias fundamentales en la filosofía de diseño: C++ está más orientado a objetos y utiliza conceptos como streams, mientras que C utiliza un enfoque más estructurado y basado en funciones.
+#FUENTECHATGPT
+
+¿Qué es un espacio de nombres en C++?
 a) Una característica que permite agrupar entidades como clases, objetos y funciones bajo un nombre.
 b) Una manera de definir variables.
 c) Una función de la biblioteca estándar.
 d) Un tipo de ciclo en C++.
-En programación orientada a objetos en C++, ¿qué es una clase?
+SOLUCIÓN:
+a) Una característica que permite agrupar entidades como clases, objetos y funciones bajo un nombre.
 
+Explicación:
+Un espacio de nombres (namespace) en C++ es un contenedor que permite organizar y agrupar entidades como funciones, clases, objetos y variables bajo un nombre común para evitar conflictos de nombres.
+
+Por ejemplo:
+#include <iostream>
+
+// Definición de un espacio de nombres
+namespace MiEspacio {
+    void mostrarMensaje() {
+        std::cout << "Hola desde MiEspacio" << std::endl;
+    }
+}
+
+int main() {
+    // Llamada a la función dentro del espacio de nombres
+    MiEspacio::mostrarMensaje();
+    return 0;
+}
+El uso de espacios de nombres ayuda a:
+
+Evitar colisiones de nombres cuando diferentes partes de un programa (o bibliotecas) tienen funciones o variables con el mismo nombre.
+Organizar el código de manera más estructurada.
+En el ejemplo anterior, MiEspacio:: califica la función mostrarMensaje para indicar que pertenece al espacio de nombres MiEspacio.
+#FUENTECHATGPT
+
+En programación orientada a objetos en C++, ¿qué es una clase?
 a) Una agrupación de funciones.
 b) Un tipo de variable.
 c) Un tipo de dato primitivo.
 d) Una plantilla para crear objetos, proporciona una definición inicial para el estado (miembros de datos) y el comportamiento (miembros de la función).
-¿Qué son los templates en C++?
+SOLUCIÓN:
+d) Una plantilla para crear objetos, proporciona una definición inicial para el estado (miembros de datos) y el comportamiento (miembros de la función).
 
+Explicación:
+En programación orientada a objetos (POO) en C++, una clase es una plantilla o modelo que define las características y comportamientos comunes que tendrán los objetos creados a partir de ella.
+
+Características de una clase:
+Estado: Se define mediante los miembros de datos o atributos (variables de la clase).
+Comportamiento: Se define mediante los miembros de la función o métodos (funciones de la clase).
+Es la base para crear objetos, que son instancias concretas de la clase.
+Por ejemplo:
+class Coche {
+private:
+    string marca;  // Miembro de datos (atributo)
+    int velocidad; // Miembro de datos (atributo)
+
+public:
+    void setMarca(string m) { // Método para establecer la marca
+        marca = m;
+    }
+
+    void acelerar(int v) { // Método para aumentar la velocidad
+        velocidad += v;
+    }
+
+    void mostrarCoche() { // Método para mostrar el estado
+        cout << "Marca: " << marca << ", Velocidad: " << velocidad << endl;
+    }
+};
+En este ejemplo:
+
+La clase Coche define los atributos (marca, velocidad) y métodos (setMarca, acelerar, mostrarCoche) que un objeto de tipo Coche tendrá.
+Los objetos creados a partir de esta clase compartirán esta estructura, pero podrán tener diferentes valores para sus atributos.
+En resumen, una clase es el concepto clave de la POO que define cómo será el estado y comportamiento de sus objetos.
+#FUENTECHATGPT
+
+¿Qué son los templates en C++?
 a) Un tipo especial de clase.
 b) Permiten la creación de funciones y clases genéricas, es decir, que pueden trabajar con cualquier tipo de datos.
 c) Una forma de definir variables.
 d) Una característica específica de C.
+SOLUCIÓN:
+b) Permiten la creación de funciones y clases genéricas, es decir, que pueden trabajar con cualquier tipo de datos.
+
+Explicación:
+Los templates en C++ son una característica poderosa que permite escribir funciones y clases genéricas que funcionan con cualquier tipo de dato sin necesidad de duplicar el código para cada tipo.
+
+Ventajas de los templates:
+Reutilización de código: El mismo código puede manejar diferentes tipos de datos.
+Flexibilidad: Las funciones y clases se pueden parametrizar según el tipo.
+Eficiencia: Se generan implementaciones específicas del código para los tipos utilizados, en tiempo de compilación.
+Ejemplo de template para una función:
+#include <iostream>
+using namespace std;
+
+// Template para una función genérica
+template <typename T>
+T obtenerMayor(T a, T b) {
+    return (a > b) ? a : b;
+}
+
+int main() {
+    cout << "Mayor entre 5 y 10: " << obtenerMayor(5, 10) << endl;          // Enteros
+    cout << "Mayor entre 5.5 y 2.3: " << obtenerMayor(5.5, 2.3) << endl;  // Flotantes
+    cout << "Mayor entre 'a' y 'z': " << obtenerMayor('a', 'z') << endl;  // Caracteres
+    return 0;
+}
+En este ejemplo, la función obtenerMayor puede operar con cualquier tipo de dato (int, float, char, etc.) gracias al uso del template.
+Ejemplo de template para una clase:
+#include <iostream>
+using namespace std;
+
+// Template para una clase genérica
+template <typename T>
+class Caja {
+private:
+    T contenido;
+
+public:
+    void setContenido(T c) {
+        contenido = c;
+    }
+
+    T getContenido() {
+        return contenido;
+    }
+};
+
+int main() {
+    Caja<int> cajaEntero;       // Caja para enteros
+    cajaEntero.setContenido(42);
+    cout << "Contenido de cajaEntero: " << cajaEntero.getContenido() << endl;
+
+    Caja<string> cajaTexto;     // Caja para cadenas
+    cajaTexto.setContenido("Hola");
+    cout << "Contenido de cajaTexto: " << cajaTexto.getContenido() << endl;
+
+    return 0;
+}
+#FUENTECHATGPT
 Parte 2: Pregunta de desarrollo de código (80%)
 
 
